@@ -1,0 +1,112 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 250 87% 67%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 250 87% 67%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 223 47% 11%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 250 87% 67%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 250 87% 67%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased min-h-screen;
+    background: radial-gradient(
+      circle at center,
+      rgba(var(--primary), 0.1) 0%,
+      rgba(var(--background), 0.1) 100%
+    ),
+    linear-gradient(
+      45deg,
+      rgba(var(--primary), 0.05) 0%,
+      rgba(var(--accent), 0.05) 100%
+    );
+    background-attachment: fixed;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-white/20 dark:border-gray-700/20 shadow-lg;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent;
+  }
+  
+  .section-title {
+    @apply text-4xl font-bold text-gradient mb-4;
+  }
+  
+  .section-subtitle {
+    @apply text-xl text-muted-foreground mb-8 max-w-2xl mx-auto;
+  }
+
+  .nav-link {
+    @apply text-foreground/70 hover:text-primary transition-colors duration-200;
+  }
+
+  .skill-card {
+    @apply p-6 rounded-2xl glass-card hover:scale-[1.02] transition-all duration-300;
+  }
+
+  .project-card {
+    @apply p-6 rounded-2xl glass-card hover:scale-[1.02] transition-all duration-300;
+  }
+
+  .gradient-border {
+    @apply relative rounded-xl overflow-hidden;
+    &::before {
+      content: "";
+      @apply absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary -z-10;
+      padding: 2px;
+      border-radius: inherit;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: xor;
+    }
+  }
+}
