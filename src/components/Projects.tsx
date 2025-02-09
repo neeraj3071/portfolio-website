@@ -1,4 +1,3 @@
-
 import { ArrowUpRight } from "lucide-react";
 
 const projects = [
@@ -43,36 +42,34 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="min-h-screen py-20 px-4 bg-gradient-to-b from-white to-gray-50"
+      className="min-h-screen py-20 px-4 bg-gradient-to-b from-background to-background/50 dark:from-gray-900 dark:to-gray-800"
     >
       <div className="max-w-6xl mx-auto space-y-8">
-        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 text-center mb-12">
-          Projects
-        </h2>
+        <h2 className="section-title text-center">Projects</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project, index) => (
             <div
               key={index}
-              className="group p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 animate-fade-up"
+              className="group glass-card hover:scale-[1.02] transition-all duration-300 animate-fade-up"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="flex justify-between items-start mb-4">
-                <h3 className="text-xl font-semibold text-gray-900 group-hover:text-primary transition-colors duration-300">
+                <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
                   {project.title}
                 </h3>
                 <a
                   href={project.link}
-                  className="text-gray-500 hover:text-primary transition-colors duration-300"
+                  className="text-muted-foreground hover:text-primary transition-colors duration-300"
                 >
                   <ArrowUpRight className="h-5 w-5" />
                 </a>
               </div>
-              <p className="text-gray-600 mb-4">{project.description}</p>
+              <p className="text-muted-foreground mb-4">{project.description}</p>
               <div className="flex flex-wrap gap-2">
                 {project.technologies.map((tech, techIndex) => (
                   <span
                     key={techIndex}
-                    className="px-3 py-1 text-sm bg-gray-100 text-gray-700 rounded-full"
+                    className="px-3 py-1 text-sm bg-primary/10 dark:bg-primary/20 text-primary rounded-full"
                   >
                     {tech}
                   </span>
